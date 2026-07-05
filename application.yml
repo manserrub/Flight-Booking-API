@@ -8,7 +8,6 @@ spring:
 
     password: postgres
 
-
   jpa:
 
     hibernate:
