@@ -41,4 +41,28 @@ public class AirportService implements FindAirportUseCase {
     public List<Airport> findAllByCountry(String country) {
         return repositoryPort.findAllByCountry(country);
     }
+
+    @Override
+    public Airport createAirport(Airport airport) {
+        return repositoryPort.save(airport);
+    }
+
+    @Override
+    public Airport updateAirport(Long id, Airport airport) {
+        Airport existing = repositoryPort.findById(id).orElseThrow(() -> new AirportNotFoundException("Airport not found with id: " + id));
+        Airport toSave = new Airport(
+                existing.getId(),
+                airport.getIataCode() != null ? airport.getIataCode() : existing.getIataCode(),
+                airport.getName() != null ? airport.getName() : existing.getName(),
+                airport.getCity() != null ? airport.getCity() : existing.getCity(),
+                airport.getCountry() != null ? airport.getCountry() : existing.getCountry()
+        );
+        return repositoryPort.save(toSave);
+    }
+
+    @Override
+    public void deleteAirport(Long id) {
+        repositoryPort.findById(id).orElseThrow(() -> new AirportNotFoundException("Airport not found with id: " + id));
+        repositoryPort.deleteById(id);
+    }
 }

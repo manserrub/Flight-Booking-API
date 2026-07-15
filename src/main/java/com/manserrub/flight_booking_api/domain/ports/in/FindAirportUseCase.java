@@ -11,4 +11,8 @@ public interface FindAirportUseCase {
     List<Airport> findAll();
     List<Airport> findAllByCity(String city);
     List<Airport> findAllByCountry(String country);
+
+    Airport createAirport(Airport airport);
+    Airport updateAirport(Long id, Airport airport);
+    void deleteAirport(Long id);
 }

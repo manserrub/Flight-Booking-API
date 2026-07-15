@@ -13,4 +13,7 @@ public interface AirportRepositoryPort {
     List<Airport> findAll();
     List<Airport> findAllByCity(String city);
     List<Airport> findAllByCountry(String country);
+
+    Airport save(Airport airport);
+    void deleteById(Long id);
 }

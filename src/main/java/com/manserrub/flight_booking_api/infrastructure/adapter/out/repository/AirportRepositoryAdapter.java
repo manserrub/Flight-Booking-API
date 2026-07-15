@@ -46,4 +46,16 @@ public class AirportRepositoryAdapter implements AirportRepositoryPort {
     public List<Airport> findAllByCountry(String country) {
         return jpaRepository.findByCountryIgnoreCase(country).stream().map(mapper::toDomain).collect(Collectors.toList());
     }
+
+    @Override
+    public Airport save(Airport airport) {
+        var entity = mapper.toEntity(airport);
+        var saved = jpaRepository.save(entity);
+        return mapper.toDomain(saved);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        jpaRepository.deleteById(id);
+    }
 }
