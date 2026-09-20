@@ -61,7 +61,7 @@ public class AirportService implements FindAirportUseCase {
     }
 
     @Override
-    public void deleteAirport(Long id) {
+    public void deleteAirportById(Long id) {
         repositoryPort.findById(id).orElseThrow(() -> new AirportNotFoundException("Airport not found with id: " + id));
         repositoryPort.deleteById(id);
     }

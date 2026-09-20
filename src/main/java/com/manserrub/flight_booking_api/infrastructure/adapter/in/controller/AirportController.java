@@ -78,6 +78,6 @@ public class AirportController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAirport(@PathVariable Long id) {
-        findAirportUseCase.deleteAirport(id);
+        findAirportUseCase.deleteAirportById(id);
     }
 }

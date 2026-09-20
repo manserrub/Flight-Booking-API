@@ -58,4 +58,14 @@ public class AirportRepositoryAdapter implements AirportRepositoryPort {
     public void deleteById(Long id) {
         jpaRepository.deleteById(id);
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        return jpaRepository.existsById(id);
+    }
+
+    @Override
+    public boolean existsByIataCode(String iataCode) {
+        return jpaRepository.existsByIataCodeIgnoreCase(iataCode);
+    }
 }

@@ -14,5 +14,5 @@ public interface FindAirportUseCase {
 
     Airport createAirport(Airport airport);
     Airport updateAirport(Long id, Airport airport);
-    void deleteAirport(Long id);
+    void deleteAirportById(Long id);
 }
